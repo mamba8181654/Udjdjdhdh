@@ -4,7 +4,7 @@ async function sendMessage() {
   chat.value += "You: " + input + "\n";
   document.getElementById('input').value = "";
 
-  const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=YOUR_API_KEY_HERE", {
+  const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyB3Mb_8NLXB6LCzg5-z9rvijBieXkMHOdw, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
