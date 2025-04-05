@@ -4,18 +4,17 @@ async function sendMessage() {
   chat.value += "You: " + input + "\n";
   document.getElementById('input').value = "";
 
-  const response = await fetch("https://api.openai.com/v1/chat/completions", {
+  const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=YOUR_API_KEY_HERE", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer AIzaSyB3Mb_8NLXB6LCzg5-z9rvijBieXkMHOdw"
+      "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: input }]
+      contents: [{ parts: [{ text: input }] }]
     })
   });
 
   const data = await response.json();
-  const reply = data.choices[0].message.content;
-  chat.value += "GPT: " + reply + "\n\n";
+  const reply = data.candidates[0].content.parts[0].text;
+  chat.value += "Gemini: " + reply + "\n\n";
+}
